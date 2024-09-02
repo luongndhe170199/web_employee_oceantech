@@ -1,0 +1,49 @@
+﻿@model IEnumerable<OceanTechLevel1.Models.Employee>
+
+@{
+    ViewData["Title"] = "Danh sách Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<meta charset="UTF-8">
+<h2>Danh sách Employee</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Tuổi</th>
+            <th>Dân tộc</th>
+            <th>Nghề nghiệp</th>
+            <th>Vị trí</th>
+            <th>CCCD</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.FullName</td>
+                <td>@employee.BirthDate.ToShortDateString()</td>
+                <td>@employee.Age</td>
+                <td>@employee.Ethnicity.EthnicityName</td>
+                <td>@employee.Occupation.OccupationName</td>
+                <td>@employee.Position.PositionName</td>
+                <td>@employee.CitizenId</td>
+                <td>@employee.PhoneNumber</td>
+                <td>@employee.Province.ProvinceName, @employee.District.DistrictName, @employee.Commune.CommuneName</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Employee", new { id = employee.Id })" class="btn btn-sm btn-primary">Sửa</a>
+                    <a href="@Url.Action("Delete", "Employee", new { id = employee.Id })" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Employee")" class="btn btn-success">Thêm Employee mới</a>

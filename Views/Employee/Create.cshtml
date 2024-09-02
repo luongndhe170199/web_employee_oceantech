@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Create Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản lý Employee</h2>
+
+<form>
+    <div class="row mb-3">
+        <label for="Name" class="col-sm-2 col-form-label">1. Họ tên</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Name" name="Name" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="BirthDate" class="col-sm-2 col-form-label">2. Ngày sinh</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" id="BirthDate" name="BirthDate" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Age" class="col-sm-2 col-form-label">3. Tuổi</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Age" name="Age" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Ethnicity" class="col-sm-2 col-form-label">4. Dân tộc</label>
+        <div class="col-sm-10">
+            <select class="form-select" id="Ethnicity" name="Ethnicity">
+                <option selected>Chọn dân tộc</option>
+                @foreach (var item in ViewBag.Ethnicities)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Job" class="col-sm-2 col-form-label">5. Nghề nghiệp</label>
+        <div class="col-sm-10">
+            <select class="form-select" id="Job" name="Job">
+                <option selected>Chọn nghề nghiệp</option>
+                @foreach (var item in ViewBag.Occupations)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="City" class="col-sm-2 col-form-label">8. Địa chỉ</label>
+        <div class="col-sm-4">
+            <select class="form-select" id="City" name="City">
+                <option selected>Chọn Tỉnh/Thành phố</option>
+                @foreach (var item in ViewBag.Provinces)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <select class="form-select" id="District" name="District">
+                <option selected>Chọn Quận/Huyện</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select class="form-select" id="Ward" name="Ward">
+                <option selected>Chọn Xã/Phường</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="SpecificAddress" class="col-sm-2 col-form-label">Cụ thể</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="SpecificAddress" name="SpecificAddress" />
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <a href="@Url.Action("ListOfEmployee", "Employee")" class="btn btn-secondary">Danh sách Employee</a>
+        <div>
+            <button type="reset" class="btn btn-warning">Hủy</button>
+            <button type="submit" class="btn btn-primary">Xác nhận</button>
+        </div>
+    </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> // luu y manh
+<script>
+    var districts = @Html.Raw(ViewBag.DistrictsJson);
+    var communes = @Html.Raw(ViewBag.CommunesJson);
+
+    console.log(districts); // Kiểm tra dữ liệu quận/huyện
+    console.log(communes);  // Kiểm tra dữ liệu xã/phường
+
+    $('#City').change(function () {
+        var selectedProvinceId = $(this).val();
+        console.log("Selected ProvinceId:", selectedProvinceId);
+
+        var filteredDistricts = districts.filter(function (district) {
+            return district.ProvinceId.toString() == selectedProvinceId.toString();
+        });
+
+        $('#District').empty().append('<option selected>Chọn Quận/Huyện</option>');
+        filteredDistricts.forEach(function (district) {
+            $('#District').append('<option value="' + district.DistrictId + '">' + district.DistrictName + '</option>');
+        });
+
+        $('#Ward').empty().append('<option selected>Chọn Xã/Phường</option>');
+    });
+
+    $('#District').change(function () {
+        var selectedDistrictId = $(this).val();
+        console.log("Selected DistrictId:", selectedDistrictId);
+
+        var filteredCommunes = communes.filter(function (commune) {
+            return commune.DistrictId.toString() == selectedDistrictId.toString();
+        });
+
+        $('#Ward').empty().append('<option selected>Chọn Xã/Phường</option>');
+        filteredCommunes.forEach(function (commune) {
+            $('#Ward').append('<option value="' + commune.CommuneId + '">' + commune.CommuneName + '</option>');
+        });
+    });
+</script>
