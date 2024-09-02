@@ -1,0 +1,23 @@
+﻿@model OceanTechLevel1.Models.Employee
+@{
+    ViewData["Title"] = "Delete Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Delete Product</h2>
+<form action="/employee/delete/@Model.Id" method="post">
+    <input type="hidden" name="FullName" value="@Model.Id"></input>
+    <table class="table">
+
+        <tr>
+            <th>Họ tên</th>
+            <td>@Model.FullName</td>
+        </tr>
+        <tr>
+            <th>Ngày sinh</th>
+            <td>@Model.BirthDate.ToShortDateString()</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a href="/employee/ListOfEmployee" class="btn btn-dark">Cancel</a>
+
+</form>

@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Solution PRN212\\OceanTechLevel1\\wwwroot\\js\\employeeValidation.js",
+      "PackagePath": "staticwebassets\\js\\employeeValidation.js"
+    },
+    {
       "Id": "C:\\Solution PRN212\\OceanTechLevel1\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

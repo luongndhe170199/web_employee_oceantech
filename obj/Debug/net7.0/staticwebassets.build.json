@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "REzrf6m7n4jzGgn7sTnNndlnK8/Aam6swnJnVLNUSeo=",
+  "Hash": "a7K8nZL1m7xQVvooO8D2B/jrVz83IVxqWdU7VS6a3u8=",
   "Source": "OceanTechLevel1",
   "BasePath": "_content/OceanTechLevel1",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Solution PRN212\\OceanTechLevel1\\wwwroot\\js\\employeeValidation.js",
+      "SourceId": "OceanTechLevel1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Solution PRN212\\OceanTechLevel1\\wwwroot\\",
+      "BasePath": "_content/OceanTechLevel1",
+      "RelativePath": "js/employeeValidation.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\employeeValidation.js"
     },
     {
       "Identity": "C:\\Solution PRN212\\OceanTechLevel1\\wwwroot\\js\\site.js",

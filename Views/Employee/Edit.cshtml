@@ -1,31 +1,32 @@
 ﻿@model OceanTechLevel1.Models.Employee
 @{
-    ViewData["Title"] = "Create Employee";
+    ViewData["Title"] = "Edit Employee";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Quản lý Employee</h2>
+<h2>Edit Employee</h2>
 
-<form action="/employee/create" method="post">
-    
+<form action="/employee/edit/@Model.Id" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
     <div class="row mb-3">
         <label for="FullName" class="col-sm-2 col-form-label">1. Họ tên</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="FullName" name="FullName" />
+            <input type="text" class="form-control" id="FullName" name="FullName" value="@Model.FullName" />
         </div>
     </div>
 
     <div class="row mb-3">
         <label for="BirthDate" class="col-sm-2 col-form-label">2. Ngày sinh</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" id="BirthDate" name="BirthDate" />
+            <input type="date" class="form-control" id="BirthDate" name="BirthDate" value="@Model.BirthDate.ToString("yyyy-MM-dd")" />
         </div>
     </div>
 
     <div class="row mb-3">
         <label for="Age" class="col-sm-2 col-form-label">3. Tuổi</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="Age" name="Age" />
+            <input type="text" class="form-control" id="Age" name="Age" value="@Model.Age" />
         </div>
     </div>
 
@@ -36,7 +37,7 @@
                 <option selected>Chọn dân tộc</option>
                 @foreach (var item in ViewBag.Ethnicities)
                 {
-                    <option value="@item.Value">@item.Text</option>
+                    <option value="@item.Value" @(item.Value == Model.EthnicityId.ToString() ? "selected" : "")>@item.Text</option>
                 }
             </select>
         </div>
@@ -49,33 +50,34 @@
                 <option selected>Chọn nghề nghiệp</option>
                 @foreach (var item in ViewBag.Occupations)
                 {
-                    <option value="@item.Value">@item.Text</option>
+                    <option value="@item.Value" @(item.Value == Model.OccupationId.ToString() ? "selected" : "")>@item.Text</option>
                 }
             </select>
         </div>
-        </div>
-        <div class="row mb-3">
+    </div>
+
+    <div class="row mb-3">
         <label for="PositionId" class="col-sm-2 col-form-label">6. Chức vụ</label>
-            <div class="col-sm-10">
+        <div class="col-sm-10">
             <select class="form-select" id="PositionId" name="PositionId">
-                    <option selected>Chọn chức vụ </option>
-                    @foreach (var item in ViewBag.Positions)
-                    {
-                        <option value="@item.Value">@item.Text</option>
-                    }
-                </select>
-            </div>
+                <option selected>Chọn chức vụ</option>
+                @foreach (var item in ViewBag.Positions)
+                {
+                    <option value="@item.Value" @(item.Value == Model.PositionId.ToString() ? "selected" : "")>@item.Text</option>
+                }
+            </select>
+        </div>
     </div>
     <div class="row mb-3">
         <label for="Age" class="col-sm-2 col-form-label">7. CCCD</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="CitizenId" name="CitizenId" />
+            <input type="text" class="form-control" id="CitizenId" name="CitizenId" value="@Model.CitizenId"/>
         </div>
     </div>
     <div class="row mb-3">
         <label for="PhoneNumber" class="col-sm-2 col-form-label">8. Số điện thoại</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" />
+            <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" />
         </div>
     </div>
     <div class="row mb-3">
@@ -85,26 +87,34 @@
                 <option selected>Chọn Tỉnh/Thành phố</option>
                 @foreach (var item in ViewBag.Provinces)
                 {
-                    <option value="@item.Value">@item.Text</option>
+                    <option value="@item.Value" @(item.Value == Model.ProvinceId.ToString() ? "selected" : "")>@item.Text</option>
                 }
             </select>
         </div>
         <div class="col-sm-4">
             <select class="form-select" id="DistrictId" name="DistrictId">
                 <option selected>Chọn Quận/Huyện</option>
+                @foreach (var item in ViewBag.Districts)
+                {
+                    <option value="@item.DistrictId" @(item.DistrictId == Model.DistrictId ? "selected" : "")>@item.DistrictName</option>
+                }
             </select>
         </div>
         <div class="col-sm-2">
             <select class="form-select" id="CommuneId" name="CommuneId">
                 <option selected>Chọn Xã/Phường</option>
+                @foreach (var item in ViewBag.Communes)
+                {
+                    <option value="@item.CommuneId" @(item.CommuneId == Model.CommuneId ? "selected" : "")>@item.CommuneName</option>
+                }
             </select>
         </div>
     </div>
 
     <div class="row mb-3">
-            <label for="MoreInfo" class="col-sm-2 col-form-label">Cụ thể</label>
+        <label for="MoreInfo" class="col-sm-2 col-form-label">Cụ thể</label>
         <div class="col-sm-10">
-                <input type="text" class="form-control" id="MoreInfo" name="MoreInfo" />
+            <input type="text" class="form-control" id="MoreInfo" name="MoreInfo" value="@Model.MoreInfo" />
         </div>
     </div>
 
@@ -116,10 +126,9 @@
         </div>
     </div>
 </form>
+
+<!-- Phần JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
 <script>
     var districts = @Html.Raw(ViewBag.DistrictsJson);
     var communes = @Html.Raw(ViewBag.CommunesJson);
@@ -214,4 +223,12 @@
             event.preventDefault();
         }
     });
+
+    // Để đảm bảo các giá trị của District và Commune được load đúng khi mở form Edit
+    if ($('#ProvinceId').val() != "") {
+        $('#ProvinceId').trigger('change');
+    }
+    if ($('#DistrictId').val() != "") {
+        $('#DistrictId').trigger('change');
+    }
 </script>

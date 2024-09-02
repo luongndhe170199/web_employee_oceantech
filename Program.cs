@@ -34,7 +34,7 @@ namespace OceanTechLevel1
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Employee}/{action=ListOfEmployee}/{id?}");
 
             app.Run();
         }

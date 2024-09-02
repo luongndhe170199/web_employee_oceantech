@@ -31,15 +31,15 @@
                 <td>@employee.FullName</td>
                 <td>@employee.BirthDate.ToShortDateString()</td>
                 <td>@employee.Age</td>
-                <td>@employee.Ethnicity.EthnicityName</td>
-                <td>@employee.Occupation.OccupationName</td>
-                <td>@employee.Position.PositionName</td>
+                <td>@employee.Ethnicity?.EthnicityName</td>
+                <td>@employee.Occupation?.OccupationName</td>
+                <td>@employee.Position?.PositionName</td>
                 <td>@employee.CitizenId</td>
                 <td>@employee.PhoneNumber</td>
-                <td>@employee.Province.ProvinceName, @employee.District.DistrictName, @employee.Commune.CommuneName</td>
-                <td>
-                    <a href="@Url.Action("Edit", "Employee", new { id = employee.Id })" class="btn btn-sm btn-primary">Sửa</a>
-                    <a href="@Url.Action("Delete", "Employee", new { id = employee.Id })" class="btn btn-sm btn-danger">Xóa</a>
+                <td>@employee.Province?.ProvinceName, @employee.District?.DistrictName, @employee.Commune?.CommuneName,@employee?.MoreInfo</td>
+                <td class="d-flex justify-content-between">
+                    <a href="@Url.Action("Edit", "Employee", new { id = employee.Id })" class="btn btn-sm btn-primary ">Sửa</a>
+                    <a href="@Url.Action("Delete", "Employee", new { id = employee.Id })" class="btn btn-sm btn-danger ">Xóa</a>
                 </td>
             </tr>
         }
