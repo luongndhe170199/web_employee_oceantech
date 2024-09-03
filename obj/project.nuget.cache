@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WIRK2TAlprE=",
+  "dgSpecHash": "Qg+FyyzXCbmnCKwSmlZ75KrVum99hY9fX67Y00AwshcnIKo4hBypW9WJGR5N2FhvTAnbaM8wbKV5yOZV1LkNBw==",
   "success": true,
-  "projectFilePath": "C:\\Solution PRN212\\OceanTechLevel1\\OceanTechLevel1.csproj",
+  "projectFilePath": "C:\\OceanTech\\web_employee_oceantech\\OceanTechLevel1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Duc Luong\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Duc Luong\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

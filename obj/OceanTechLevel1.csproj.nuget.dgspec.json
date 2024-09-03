@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Solution PRN212\\OceanTechLevel1\\OceanTechLevel1.csproj": {}
+    "C:\\OceanTech\\web_employee_oceantech\\OceanTechLevel1.csproj": {}
   },
   "projects": {
-    "C:\\Solution PRN212\\OceanTechLevel1\\OceanTechLevel1.csproj": {
+    "C:\\OceanTech\\web_employee_oceantech\\OceanTechLevel1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Solution PRN212\\OceanTechLevel1\\OceanTechLevel1.csproj",
+        "projectUniqueName": "C:\\OceanTech\\web_employee_oceantech\\OceanTechLevel1.csproj",
         "projectName": "OceanTechLevel1",
-        "projectPath": "C:\\Solution PRN212\\OceanTechLevel1\\OceanTechLevel1.csproj",
+        "projectPath": "C:\\OceanTech\\web_employee_oceantech\\OceanTechLevel1.csproj",
         "packagesPath": "C:\\Users\\Duc Luong\\.nuget\\packages\\",
-        "outputPath": "C:\\Solution PRN212\\OceanTechLevel1\\obj\\",
+        "outputPath": "C:\\OceanTech\\web_employee_oceantech\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

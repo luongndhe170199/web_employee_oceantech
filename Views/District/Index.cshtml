@@ -1,0 +1,44 @@
+﻿@model IEnumerable<OceanTechLevel1.Models.District>
+
+@{
+    ViewData["Title"] = "Danh Sách Huyện";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Danh Sách Huyện</h2>
+    <a href="/District/Create" class="btn btn-info">Thêm mới Huyện</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Huyện</th>
+                <th>Tỉnh</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var district in Model)
+            {
+                <tr>
+                    <td>@district.DistrictId</td>
+                    <td>@district.DistrictName</td>
+                    <td>@district.Province.ProvinceName</td>
+                    <td>
+                        <a href="/District/Edit/@district.DistrictId" class="btn btn-warning btn-sm">Sửa</a>
+
+                        <!-- Form xóa -->
+                        <form action="/District/Delete/@district.DistrictId" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+                            <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa huyện này cùng với các xã và nhân viên liên quan?');
+    }
+</script>

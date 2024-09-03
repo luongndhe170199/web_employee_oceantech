@@ -1,0 +1,46 @@
+﻿@model IEnumerable<OceanTechLevel1.Models.Commune>
+
+@{
+    ViewData["Title"] = "Danh Sách Xã";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Danh Sách Xã</h2>
+    <a href="/Commune/Create" class="btn btn-info">Thêm mới Xã</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Xã</th>
+                <th>Huyện</th>
+                <th>Tỉnh</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var commune in Model)
+            {
+                <tr>
+                    <td>@commune.CommuneId</td>
+                    <td>@commune.CommuneName</td>
+                    <td>@commune.District.DistrictName</td>
+                    <td>@commune.District.Province.ProvinceName</td>
+                    <td>
+                        <a href="/Commune/Edit/@commune.CommuneId" class="btn btn-warning btn-sm">Sửa</a>
+
+                        <!-- Form xóa -->
+                        <form action="/Commune/Delete/@commune.CommuneId" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+                            <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa xã này cùng với các nhân viên liên quan?');
+    }
+</script>

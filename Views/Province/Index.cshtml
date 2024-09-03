@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OceanTechLevel1.Models.Province>
+@{
+    ViewData["Title"] = "Danh Mục Tỉnh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Danh sách Tỉnh</h2>
+    <a href="/Province/Create" class="btn btn-info">Thêm mới Tỉnh</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Tỉnh</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var province in Model)
+            {
+                <tr>
+                    <td>@province.ProvinceId</td>
+                    <td>@province.ProvinceName</td>
+                    <td>
+                        <a href="/Province/edit/@province.ProvinceId" class="btn btn-warning btn-sm">Sửa</a>
+
+                        <!-- Form xóa -->
+                        <form action="/Province/Delete/@province.ProvinceId" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+                            <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa tỉnh này cùng với các huyện và xã liên quan?');
+    }
+</script>

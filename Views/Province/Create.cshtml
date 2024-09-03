@@ -1,0 +1,18 @@
+﻿@model OceanTechLevel1.Models.Province
+
+@{
+    ViewData["Title"] = "Create Tỉnh ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form action="/Province/Create" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProvinceName">Tên Tỉnh </label>
+            <input type="text" class="form-control" id="ProvinceName" name="ProvinceName" placeholder="ProvinceName"></input>
+
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="/Province/index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,25 @@
+﻿@model OceanTechLevel1.Models.Commune
+
+@{
+    ViewData["Title"] = "Tạo Xã";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form action="/Commune/Create" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="CommuneName">Tên Xã</label>
+            <input type="text" class="form-control" id="CommuneName" name="CommuneName" placeholder="CommuneName" />
+        </div>
+        <div class="col-md-6">
+            <label for="DistrictId">Huyện</label>
+            <select class="form-control" id="DistrictId" name="DistrictId">
+                @foreach (var district in ViewData["DistrictId"] as SelectList)
+                {
+                    <option value="@district.Value">@district.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Tạo</button>
+    <a href="/Commune/Index" class="btn btn-secondary">Hủy</a>
+</form>

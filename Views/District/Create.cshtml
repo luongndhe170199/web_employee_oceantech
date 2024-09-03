@@ -1,0 +1,25 @@
+﻿@model OceanTechLevel1.Models.District
+
+@{
+    ViewData["Title"] = "Tạo Huyện";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form action="/District/Create" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="DistrictName">Tên Huyện</label>
+            <input type="text" class="form-control" id="DistrictName" name="DistrictName" placeholder="DistrictName" />
+        </div>
+        <div class="col-md-6">
+            <label for="ProvinceId">Tỉnh</label>
+            <select class="form-control" id="ProvinceId" name="ProvinceId">
+                @foreach (var province in ViewBag.ProvinceId as SelectList)
+                {
+                    <option value="@province.Value">@province.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Tạo</button>
+    <a href="/District/Index" class="btn btn-secondary">Hủy</a>
+</form>
