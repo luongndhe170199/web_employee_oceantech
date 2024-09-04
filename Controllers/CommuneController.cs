@@ -15,11 +15,27 @@ namespace OceanTechLevel1.Controllers
             _context = context;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
-            var communes = _context.Communes.Include(c => c.District).ThenInclude(d => d.Province).ToList();
-            return View(communes);
+            var communes = _context.Communes
+                                   .Include(c => c.District)
+                                   .ThenInclude(d => d.Province)
+                                   .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Sử dụng Trim() để loại bỏ khoảng trắng ở đầu và cuối chuỗi
+                searchTerm = searchTerm.Trim().ToLower();
+
+                communes = communes.Where(c => c.CommuneName.Trim().ToLower().Contains(searchTerm) ||
+                                                c.District.DistrictName.Trim().ToLower().Contains(searchTerm) ||
+                                                c.District.Province.ProvinceName.Trim().ToLower().Contains(searchTerm));
+            }
+
+            return View(communes.ToList());
         }
+
+
 
         public ActionResult Create()
         {

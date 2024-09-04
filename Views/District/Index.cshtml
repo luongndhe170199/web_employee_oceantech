@@ -6,7 +6,19 @@
 }
 <div class="container">
     <h2>Danh Sách Huyện</h2>
-    <a href="/District/Create" class="btn btn-info">Thêm mới Huyện</a>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="/District/Create" class="btn btn-info">Thêm mới Huyện</a>
+
+        @using (Html.BeginForm("Index", "District", FormMethod.Get))
+        {
+            <div class="input-group" style="width: 300px;">
+                <input type="text" name="searchTerm" placeholder="Tìm kiếm..." class="form-control" value="@Context.Request.Query["searchTerm"].FirstOrDefault()" />
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            </div>
+        }
+    </div>
+
     <table class="table table-bordered">
         <thead>
             <tr>

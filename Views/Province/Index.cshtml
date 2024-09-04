@@ -1,11 +1,24 @@
 ﻿@model IEnumerable<OceanTechLevel1.Models.Province>
+
 @{
     ViewData["Title"] = "Danh Mục Tỉnh";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
     <h2>Danh sách Tỉnh</h2>
-    <a href="/Province/Create" class="btn btn-info">Thêm mới Tỉnh</a>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="/Province/Create" class="btn btn-info">Thêm mới Tỉnh</a>
+
+        @using (Html.BeginForm("Index", "Province", FormMethod.Get))
+        {
+            <div class="input-group" style="width: 300px;">
+                <input type="text" name="searchTerm" placeholder="Tìm kiếm..." class="form-control" value="@Context.Request.Query["searchTerm"].FirstOrDefault()" />
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            </div>
+        }
+    </div>
+
     <table class="table table-bordered">
         <thead>
             <tr>

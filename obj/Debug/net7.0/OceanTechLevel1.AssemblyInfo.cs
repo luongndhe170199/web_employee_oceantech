@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OceanTechLevel1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecc5155d93a513b2236525566f09275b12006505")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30afa5a84864aa1947fb5e106605ef88fec4a6e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("OceanTechLevel1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OceanTechLevel1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

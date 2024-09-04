@@ -15,11 +15,24 @@ namespace OceanTechLevel1.Controllers
             _context = context;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
-            var districts = _context.Districts.Include(d => d.Province).ToList();
-            return View(districts);
+            var districts = _context.Districts.Include(d => d.Province).AsQueryable();
+
+            // Nếu từ khóa tìm kiếm không rỗng, lọc danh sách các huyện
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.Trim().ToLower(); // Loại bỏ khoảng trắng ở đầu và cuối, và chuyển về chữ thường
+
+                // Tìm kiếm theo tên huyện hoặc tên tỉnh
+                districts = districts.Where(d => d.DistrictName.Trim().ToLower().Contains(searchTerm) ||
+                                                 d.Province.ProvinceName.Trim().ToLower().Contains(searchTerm));
+            }
+
+            return View(districts.ToList());
         }
+
+
 
         public ActionResult Create()
         {

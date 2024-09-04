@@ -29,7 +29,9 @@ public partial class Oceantech2Context : DbContext
 
     public virtual DbSet<Province> Provinces { get; set; }
 
-    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=(local);Database=oceantech2;User Id=sa;Password=123456;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -42,7 +44,6 @@ public partial class Oceantech2Context : DbContext
             entity.Property(e => e.CommuneId).HasColumnName("commune_id");
             entity.Property(e => e.CommuneName)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("commune_name");
             entity.Property(e => e.DistrictId).HasColumnName("district_id");
 
@@ -60,7 +61,6 @@ public partial class Oceantech2Context : DbContext
             entity.Property(e => e.DistrictId).HasColumnName("district_id");
             entity.Property(e => e.DistrictName)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("district_name");
             entity.Property(e => e.ProvinceId).HasColumnName("province_id");
 
@@ -82,23 +82,19 @@ public partial class Oceantech2Context : DbContext
                 .HasColumnName("birth_date");
             entity.Property(e => e.CitizenId)
                 .HasMaxLength(20)
-                .IsUnicode(false)
                 .HasColumnName("citizen_id");
             entity.Property(e => e.CommuneId).HasColumnName("commune_id");
             entity.Property(e => e.DistrictId).HasColumnName("district_id");
             entity.Property(e => e.EthnicityId).HasColumnName("ethnicity_id");
             entity.Property(e => e.FullName)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("full_name");
             entity.Property(e => e.MoreInfo)
                 .HasMaxLength(200)
-                .IsUnicode(false)
                 .HasColumnName("more_info");
             entity.Property(e => e.OccupationId).HasColumnName("occupation_id");
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(15)
-                .IsUnicode(false)
                 .HasColumnName("phone_number");
             entity.Property(e => e.PositionId).HasColumnName("position_id");
             entity.Property(e => e.ProvinceId).HasColumnName("province_id");
@@ -137,7 +133,6 @@ public partial class Oceantech2Context : DbContext
             entity.Property(e => e.EthnicityId).HasColumnName("ethnicity_id");
             entity.Property(e => e.EthnicityName)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("ethnicity_name");
         });
 
@@ -150,7 +145,6 @@ public partial class Oceantech2Context : DbContext
             entity.Property(e => e.OccupationId).HasColumnName("occupation_id");
             entity.Property(e => e.OccupationName)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("occupation_name");
         });
 
@@ -163,7 +157,6 @@ public partial class Oceantech2Context : DbContext
             entity.Property(e => e.PositionId).HasColumnName("position_id");
             entity.Property(e => e.PositionName)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("position_name");
         });
 
@@ -176,7 +169,6 @@ public partial class Oceantech2Context : DbContext
             entity.Property(e => e.ProvinceId).HasColumnName("province_id");
             entity.Property(e => e.ProvinceName)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("province_name");
         });
 

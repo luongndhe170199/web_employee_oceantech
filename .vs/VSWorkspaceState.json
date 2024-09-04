@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Views",
+    "\\Views\\Commune"
   ],
-  "SelectedNode": "\\Program.cs",
+  "SelectedNode": "\\Views\\Commune\\Create.cshtml",
   "PreviewInSolutionExplorer": false
 }

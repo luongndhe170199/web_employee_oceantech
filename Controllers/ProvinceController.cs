@@ -14,11 +14,20 @@ namespace OceanTechLevel1.Controllers
             _context = context;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
-            var provinces = _context.Provinces.ToList();
-            return View(provinces);
+            var provinces = _context.Provinces.AsQueryable();
+
+            // Nếu từ khóa tìm kiếm không rỗng, lọc danh sách các tỉnh
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower().Trim(); // Chuyển từ khóa tìm kiếm thành chữ thường và loại bỏ khoảng trắng
+                provinces = provinces.Where(p => p.ProvinceName.ToLower().Contains(searchTerm));
+            }
+
+            return View(provinces.ToList());
         }
+
         public ActionResult Create()
         {
             return View();

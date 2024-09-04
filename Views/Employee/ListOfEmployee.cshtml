@@ -5,7 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <meta charset="UTF-8">
-<h2>Danh sách Employee</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Danh sách Employee</h2>
+
+    @using (Html.BeginForm("ListOfEmployee", "Employee", FormMethod.Get))
+    {
+        <div class="input-group" style="width: 300px;">
+            <input type="text" name="searchTerm" placeholder="Tìm kiếm..." class="form-control" value="@Context.Request.Query["searchTerm"].FirstOrDefault()" />
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+    }
+</div>
 
 <table class="table table-bordered table-striped">
     <thead>

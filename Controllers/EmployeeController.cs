@@ -57,17 +57,34 @@ namespace OceanTechLevel1.Controllers
             return RedirectToAction("ListOfEmployee");
         }
 
-
-        public IActionResult ListOfEmployee()
+        public ActionResult ListOfEmployee(string searchTerm)
         {
-            var employees = _context.Employees.Include(e => e.Ethnicity)
+            var employees = _context.Employees
+                .Include(e => e.Ethnicity)
                 .Include(e => e.Occupation)
                 .Include(e => e.Position)
                 .Include(e => e.Province)
                 .Include(e => e.District)
                 .Include(e => e.Commune)
-                .ToList();
-            return View(employees);
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Loại bỏ khoảng trắng ở đầu và cuối chuỗi tìm kiếm
+                searchTerm = searchTerm.Trim().ToLower();
+
+                employees = employees.Where(e => e.FullName.Trim().ToLower().Contains(searchTerm) ||
+                                                 e.CitizenId.Trim().ToLower().Contains(searchTerm) ||
+                                                 (e.PhoneNumber != null && e.PhoneNumber.Trim().ToLower().Contains(searchTerm)) ||
+                                                 (e.Ethnicity != null && e.Ethnicity.EthnicityName.Trim().ToLower().Contains(searchTerm)) ||
+                                                 (e.Occupation != null && e.Occupation.OccupationName.Trim().ToLower().Contains(searchTerm)) ||
+                                                 (e.Position != null && e.Position.PositionName.Trim().ToLower().Contains(searchTerm)) ||
+                                                 (e.Province != null && e.Province.ProvinceName.Trim().ToLower().Contains(searchTerm)) ||
+                                                 (e.District != null && e.District.DistrictName.Trim().ToLower().Contains(searchTerm)) ||
+                                                 (e.Commune != null && e.Commune.CommuneName.Trim().ToLower().Contains(searchTerm)));
+            }
+
+            return View(employees.ToList());
         }
 
         public ActionResult Edit(int id)
