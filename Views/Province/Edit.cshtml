@@ -9,10 +9,13 @@
         <div class="col-md-6">
             <label for="ProvinceName">Tên Tỉnh </label>
             <input type="text" class="form-control" id="ProvinceName" name="ProvinceName" placeholder="ProvinceName" value="@Model.ProvinceName"></input>
-
+            @if (ViewData.ModelState.ContainsKey("ProvinceName") && ViewData.ModelState["ProvinceName"].Errors.Count > 0)
+            {
+                <span class="text-danger">@ViewData.ModelState["ProvinceName"].Errors[0].ErrorMessage</span>
+            }
         </div>
 
     </div>
-    <button type="submit" class="btn btn-success">Create</button>
+    <button type="submit" class="btn btn-success">Edit</button>
     <a href="/Province/index" class="btn btn-secondary">Cancel</a>
 </form>

@@ -46,15 +46,32 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Create(Commune commune)
         {
-            if (ModelState.IsValid)
+            // Kiểm tra nếu Model hợp lệ
+            if (!ModelState.IsValid)
             {
-                _context.Communes.Add(commune);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                ViewData["DistrictId"] = new SelectList(_context.Districts.Include(d => d.Province), "DistrictId", "DistrictName", commune.DistrictId);
+                return View(commune);
             }
-            ViewData["DistrictId"] = new SelectList(_context.Districts.Include(d => d.Province), "DistrictId", "DistrictName", commune.DistrictId);
-            return View(commune);
+
+            // Kiểm tra trùng lặp tên xã trong cùng một huyện
+            var existingCommune = _context.Communes
+                .FirstOrDefault(c => c.CommuneName.ToLower().Trim() == commune.CommuneName.ToLower().Trim()
+                                     && c.DistrictId == commune.DistrictId);
+
+            if (existingCommune != null)
+            {
+                // Thêm thông báo lỗi nếu tên xã đã tồn tại
+                ModelState.AddModelError("CommuneName", "Tên xã đã tồn tại trong huyện này.");
+                ViewData["DistrictId"] = new SelectList(_context.Districts.Include(d => d.Province), "DistrictId", "DistrictName", commune.DistrictId);
+                return View(commune);
+            }
+
+            // Nếu hợp lệ, thêm xã mới vào database
+            _context.Communes.Add(commune);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
+
 
         public ActionResult Edit(int id)
         {
@@ -70,15 +87,33 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Edit(Commune commune)
         {
-            if (ModelState.IsValid)
+            // Kiểm tra nếu Model hợp lệ
+            if (!ModelState.IsValid)
             {
-                _context.Communes.Update(commune);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                ViewData["DistrictId"] = new SelectList(_context.Districts.Include(d => d.Province), "DistrictId", "DistrictName", commune.DistrictId);
+                return View(commune);
             }
-            ViewData["DistrictId"] = new SelectList(_context.Districts.Include(d => d.Province), "DistrictId", "DistrictName", commune.DistrictId);
-            return View(commune);
+
+            // Kiểm tra trùng lặp tên xã trong cùng một huyện (trừ xã hiện tại đang chỉnh sửa)
+            var existingCommune = _context.Communes
+                .FirstOrDefault(c => c.CommuneName.ToLower().Trim() == commune.CommuneName.ToLower().Trim()
+                                     && c.DistrictId == commune.DistrictId
+                                     && c.CommuneId != commune.CommuneId);
+
+            if (existingCommune != null)
+            {
+                // Thêm thông báo lỗi nếu tên xã đã tồn tại
+                ModelState.AddModelError("CommuneName", "Tên xã đã tồn tại trong huyện này.");
+                ViewData["DistrictId"] = new SelectList(_context.Districts.Include(d => d.Province), "DistrictId", "DistrictName", commune.DistrictId);
+                return View(commune);
+            }
+
+            // Nếu hợp lệ, cập nhật xã trong database
+            _context.Communes.Update(commune);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public ActionResult Delete(int id)

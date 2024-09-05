@@ -35,10 +35,28 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Create(Province p)
         {
+            if (!ModelState.IsValid)
+            {
+                // Nếu Model không hợp lệ (ví dụ như bỏ trống tên tỉnh), trả về view với thông báo lỗi
+                return View(p);
+            }
+            // Kiểm tra nếu tên tỉnh đã tồn tại
+            var existingProvince = _context.Provinces
+                                           .FirstOrDefault(province => province.ProvinceName.ToLower().Trim() == p.ProvinceName.ToLower().Trim());
+
+            if (existingProvince != null)
+            {
+                // Nếu tên tỉnh đã tồn tại, thêm thông báo lỗi và trả về view
+                ModelState.AddModelError("ProvinceName", "Tên tỉnh đã tồn tại.");
+                return View(p);
+            }
+
+            // Nếu không có lỗi, thêm tỉnh mới vào database
             _context.Provinces.Add(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public ActionResult Edit(int id)
         {
             Province province = _context.Provinces.Where(row=>row.ProvinceId == id).FirstOrDefault();
@@ -47,7 +65,22 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Edit(Province pro)
         {
+            if (!ModelState.IsValid)
+            {
+                // Nếu Model không hợp lệ (ví dụ như bỏ trống tên tỉnh), trả về view với thông báo lỗi
+                return View(pro);
+            }
             Province province = _context.Provinces.Where(row => row.ProvinceId == pro.ProvinceId).FirstOrDefault();
+            // Kiểm tra nếu tên tỉnh đã tồn tại
+            var existingProvince = _context.Provinces
+                                           .FirstOrDefault(province => province.ProvinceName.ToLower().Trim() == pro.ProvinceName.ToLower().Trim());
+
+            if (existingProvince != null)
+            {
+                // Nếu tên tỉnh đã tồn tại, thêm thông báo lỗi và trả về view
+                ModelState.AddModelError("ProvinceName", "Tên tỉnh đã tồn tại.");
+                return View(pro);
+            }
 
             province.ProvinceName=pro.ProvinceName;
            _context.SaveChanges();

@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Controllers",
     "\\Views",
-    "\\Views\\Commune"
+    "\\Views\\Commune",
+    "\\Views\\Employee"
   ],
-  "SelectedNode": "\\Views\\Commune\\Create.cshtml",
+  "SelectedNode": "\\Views\\Employee\\Edit.cshtml",
   "PreviewInSolutionExplorer": false
 }

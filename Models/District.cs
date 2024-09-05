@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OceanTechLevel1.Models;
 
 public partial class District
 {
     public int DistrictId { get; set; }
-
+    [Required(ErrorMessage = "Yêu cầu nhập tên huyện.")]
     public string DistrictName { get; set; } = null!;
 
     public int? ProvinceId { get; set; }

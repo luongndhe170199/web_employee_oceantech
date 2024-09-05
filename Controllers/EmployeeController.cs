@@ -16,12 +16,14 @@ namespace OceanTechLevel1.Controllers
             _context = context;
         }
 
-        public IActionResult Create()
+        private void PopulateViewBags()
         {
             ViewBag.Ethnicities = new SelectList(_context.Ethnicities, "EthnicityId", "EthnicityName");
             ViewBag.Occupations = new SelectList(_context.Occupations, "OccupationId", "OccupationName");
             ViewBag.Positions = new SelectList(_context.Positions, "PositionId", "PositionName");
             ViewBag.Provinces = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName");
+            ViewBag.Districts = _context.Districts.ToList();  // hoặc
+            ViewBag.Communes = _context.Communes.ToList();
 
             var districtsJson = JsonSerializer.Serialize(_context.Districts
                 .Select(d => new { d.DistrictId, d.DistrictName, d.ProvinceId }).ToList(),
@@ -39,6 +41,12 @@ namespace OceanTechLevel1.Controllers
 
             ViewBag.DistrictsJson = districtsJson;
             ViewBag.CommunesJson = communesJson;
+        }
+
+
+        public ActionResult Create()
+        {
+           PopulateViewBags();
 
             return View();
         }
@@ -52,10 +60,21 @@ namespace OceanTechLevel1.Controllers
                 return View(p);
             }
 
+            // Kiểm tra nếu CCCD đã tồn tại
+            var existingEmployee = _context.Employees
+                                           .FirstOrDefault(e => e.CitizenId == p.CitizenId);
+            if (existingEmployee != null)
+            {
+                ModelState.AddModelError("CitizenId", "Số CCCD đã tồn tại.");
+                PopulateViewBags(); // Gọi hàm để thiết lập lại ViewBag
+                return View(p); // Trả về view với thông báo lỗi
+            }
+
             _context.Employees.Add(p);
             _context.SaveChanges();
             return RedirectToAction("ListOfEmployee");
         }
+
 
         public ActionResult ListOfEmployee(string searchTerm)
         {
@@ -91,29 +110,7 @@ namespace OceanTechLevel1.Controllers
         {
             Employee employee = _context.Employees.Where(row => row.Id == id).FirstOrDefault();
 
-            ViewBag.Ethnicities = new SelectList(_context.Ethnicities, "EthnicityId", "EthnicityName", employee.EthnicityId);
-            ViewBag.Occupations = new SelectList(_context.Occupations, "OccupationId", "OccupationName", employee.OccupationId);
-            ViewBag.Positions = new SelectList(_context.Positions, "PositionId", "PositionName", employee.PositionId);
-            ViewBag.Provinces = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName", employee.ProvinceId);
-            ViewBag.Districts = _context.Districts.ToList();  // hoặc
-            ViewBag.Communes = _context.Communes.ToList();
-
-            var districtsJson = JsonSerializer.Serialize(_context.Districts
-                .Select(d => new { d.DistrictId, d.DistrictName, d.ProvinceId }).ToList(),
-                new JsonSerializerOptions
-                {
-                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-                });
-
-            var communesJson = JsonSerializer.Serialize(_context.Communes
-                .Select(c => new { c.CommuneId, c.CommuneName, c.DistrictId }).ToList(),
-                new JsonSerializerOptions
-                {
-                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-                });
-
-            ViewBag.DistrictsJson = districtsJson;
-            ViewBag.CommunesJson = communesJson;
+            PopulateViewBags();
 
             return View(employee);
         }
@@ -123,6 +120,20 @@ namespace OceanTechLevel1.Controllers
         {
             Employee employee = _context.Employees.Where(row => row.Id == emp.Id).FirstOrDefault();
 
+            // Kiểm tra nếu CCCD đã tồn tại trong hệ thống và không phải của nhân viên hiện tại
+            var existingEmployee = _context.Employees
+                                           .FirstOrDefault(e => e.CitizenId == emp.CitizenId && e.Id != emp.Id);
+
+            if (existingEmployee != null)
+            {
+                ModelState.AddModelError("CitizenId", "Số CCCD đã tồn tại.");
+
+                // Thiết lập lại ViewBag để các dropdown tiếp tục hiển thị đúng
+                PopulateViewBags();
+
+                // Trả về view với thông báo lỗi
+                return View(emp);
+            }
             // update
             employee.FullName = emp.FullName;
             employee.BirthDate = emp.BirthDate;

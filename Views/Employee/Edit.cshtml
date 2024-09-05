@@ -72,6 +72,10 @@
         <label for="Age" class="col-sm-2 col-form-label">7. CCCD</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="CitizenId" name="CitizenId" value="@Model.CitizenId"/>
+            @if (ViewData.ModelState["CitizenId"] != null)
+            {
+                <span class="text-danger">@ViewData.ModelState["CitizenId"].Errors.FirstOrDefault()?.ErrorMessage</span>
+            }
         </div>
     </div>
     <div class="row mb-3">

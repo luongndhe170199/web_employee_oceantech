@@ -9,7 +9,11 @@
     <div class="row">
         <div class="col-md-6">
             <label for="DistrictName">Tên Huyện</label>
-            <input type="text" class="form-control" id="DistrictName" name="DistrictName" placeholder="DistrictName" value="@Model.DistrictName" />
+            <input type="text" class="form-control" id="DistrictName" name="DistrictName" placeholder="Nhập tên huyện" value="@Model.DistrictName" />
+            @if (ViewData.ModelState.ContainsKey("DistrictName") && ViewData.ModelState["DistrictName"].Errors.Count > 0)
+            {
+                <span class="text-danger">@ViewData.ModelState["DistrictName"].Errors[0].ErrorMessage</span>
+            }
         </div>
         <div class="col-md-6">
             <label for="ProvinceId">Tỉnh</label>
@@ -24,3 +28,4 @@
     <button type="submit" class="btn btn-success">Cập Nhật</button>
     <a href="/District/Index" class="btn btn-secondary">Hủy</a>
 </form>
+

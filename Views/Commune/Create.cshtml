@@ -8,7 +8,11 @@
     <div class="row">
         <div class="col-md-6">
             <label for="CommuneName">Tên Xã</label>
-            <input type="text" class="form-control" id="CommuneName" name="CommuneName" placeholder="CommuneName" />
+            <input type="text" class="form-control" id="CommuneName" name="CommuneName" placeholder="Nhập tên xã" />
+            @if (ViewData.ModelState.ContainsKey("CommuneName") && ViewData.ModelState["CommuneName"].Errors.Count > 0)
+            {
+                <span class="text-danger">@ViewData.ModelState["CommuneName"].Errors[0].ErrorMessage</span>
+            }
         </div>
         <div class="col-md-6">
             <label for="DistrictId">Huyện</label>

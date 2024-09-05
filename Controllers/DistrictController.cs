@@ -43,15 +43,32 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Create(District d)
         {
-            if (ModelState.IsValid)
+            // Kiểm tra nếu Model hợp lệ
+            if (!ModelState.IsValid)
             {
-                _context.Districts.Add(d);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                // Hiển thị lại form với dữ liệu đã nhập nếu Model không hợp lệ
+                ViewBag.ProvinceId = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName", d.ProvinceId);
+                return View(d);
             }
-            ViewBag.ProvinceId = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName", d.ProvinceId);
-            return View(d);
+
+            // Kiểm tra tên huyện có trùng lặp trong cùng một tỉnh không
+            var existingDistrict = _context.Districts
+                .FirstOrDefault(district => district.DistrictName.ToLower().Trim() == d.DistrictName.ToLower().Trim()
+                                            && district.ProvinceId == d.ProvinceId);
+            if (existingDistrict != null)
+            {
+                // Thêm thông báo lỗi nếu tên huyện đã tồn tại
+                ModelState.AddModelError("DistrictName", "Tên huyện đã tồn tại trong tỉnh này.");
+                ViewBag.ProvinceId = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName", d.ProvinceId);
+                return View(d);
+            }
+
+            // Thêm huyện mới vào database nếu không có lỗi
+            _context.Districts.Add(d);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
+
 
         public ActionResult Edit(int id)
         {
@@ -67,15 +84,32 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Edit(District d)
         {
-            if (ModelState.IsValid)
+            // Kiểm tra nếu Model hợp lệ
+            if (!ModelState.IsValid)
             {
-                _context.Districts.Update(d);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.ProvinceId = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName", d.ProvinceId);
+                return View(d);
             }
-            ViewBag.ProvinceId = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName", d.ProvinceId);
-            return View(d);
+
+            // Kiểm tra tên huyện có trùng lặp trong cùng một tỉnh không (trừ huyện hiện tại đang chỉnh sửa)
+            var existingDistrict = _context.Districts
+                .FirstOrDefault(district => district.DistrictName.ToLower().Trim() == d.DistrictName.ToLower().Trim()
+                                            && district.ProvinceId == d.ProvinceId
+                                            && district.DistrictId != d.DistrictId);
+            if (existingDistrict != null)
+            {
+                // Thêm thông báo lỗi nếu tên huyện đã tồn tại
+                ModelState.AddModelError("DistrictName", "Tên huyện đã tồn tại trong tỉnh này.");
+                ViewBag.ProvinceId = new SelectList(_context.Provinces, "ProvinceId", "ProvinceName", d.ProvinceId);
+                return View(d);
+            }
+
+            // Cập nhật huyện trong database nếu không có lỗi
+            _context.Districts.Update(d);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public ActionResult Delete(int id)
