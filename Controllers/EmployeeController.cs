@@ -62,7 +62,7 @@ namespace OceanTechLevel1.Controllers
 
             // Kiểm tra nếu CCCD đã tồn tại
             var existingEmployee = _context.Employees
-                                           .FirstOrDefault(e => e.CitizenId == p.CitizenId);
+                                           .FirstOrDefault(e => e.CitizenId == p.CitizenId.Trim());
             if (existingEmployee != null)
             {
                 ModelState.AddModelError("CitizenId", "Số CCCD đã tồn tại.");

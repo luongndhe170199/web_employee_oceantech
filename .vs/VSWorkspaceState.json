@@ -4,8 +4,9 @@
     "\\Controllers",
     "\\Views",
     "\\Views\\Commune",
-    "\\Views\\Employee"
+    "\\Views\\Employee",
+    "\\Views\\Province"
   ],
-  "SelectedNode": "\\Views\\Employee\\Edit.cshtml",
+  "SelectedNode": "\\Views\\Commune\\Create.cshtml",
   "PreviewInSolutionExplorer": false
 }
