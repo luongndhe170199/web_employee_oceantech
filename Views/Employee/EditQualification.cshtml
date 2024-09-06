@@ -1,0 +1,33 @@
+﻿@model OceanTechLevel1.Models.EmployeeQualification
+
+@{
+    ViewData["Title"] = "Sửa văn bằng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sửa văn bằng của nhân viên</h2>
+
+@using (Html.BeginForm("EditQualification", "Employee", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="QualificationName">Tên văn bằng</label>
+        <input type="text" class="form-control" id="QualificationName" name="QualificationName" value="@Model.QualificationName" required />
+    </div>
+    <div class="form-group">
+        <label for="IssueDate">Ngày cấp</label>
+        <input type="date" class="form-control" id="IssueDate" name="IssueDate" value="@Model.IssueDate.ToString("yyyy-MM-dd")" required />
+    </div>
+    <div class="form-group">
+        <label for="ExpirationDate">Ngày hết hạn</label>
+        <input type="date" class="form-control" id="ExpirationDate" name="ExpirationDate" value="@Model.ExpirationDate?.ToString("yyyy-MM-dd")" />
+    </div>
+    <div class="form-group">
+        <label for="ProvinceId">Tỉnh/Thành phố cấp văn bằng</label>
+        @Html.DropDownList("ProvinceId", new SelectList(ViewBag.Provinces, "ProvinceId", "ProvinceName", Model.ProvinceId), "Chọn tỉnh/thành phố", new { @class = "form-control", required = "required" })
+    </div>
+
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="EmployeeId" value="@Model.EmployeeId" />
+    <button type="submit" class="btn btn-success">Cập nhật văn bằng</button>
+}
+<a href="@Url.Action("EmployeeQualifications", "Employee", new { employeeId = Model.EmployeeId })" class="btn btn-secondary">Hủy</a>

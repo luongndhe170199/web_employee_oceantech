@@ -35,6 +35,8 @@ public partial class Employee
 
     public virtual District? District { get; set; }
 
+    public virtual ICollection<EmployeeQualification> EmployeeQualifications { get; set; } = new List<EmployeeQualification>();
+
     public virtual Ethnicity? Ethnicity { get; set; }
 
     public virtual Occupation? Occupation { get; set; }

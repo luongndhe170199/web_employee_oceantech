@@ -1,0 +1,103 @@
+﻿@model OceanTechLevel1.Models.Employee
+
+@{
+    ViewData["Title"] = "Chi tiết văn bằng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết văn bằng của @Model.FullName</h2>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" id="success-message">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" id="error-message">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Sử dụng jQuery (nếu có)
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('#success-message').fadeOut('slow');
+            $('#error-message').fadeOut('slow');
+        }, 2000); // 2000ms = 2 giây
+    });
+</script>
+
+<p><strong>Họ tên:</strong> @Model.FullName</p>
+<p><strong>CCCD:</strong> @Model.CitizenId</p>
+
+<h3>Danh sách văn bằng</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên văn bằng</th>
+            <th>Ngày cấp</th>
+            <th>Ngày hết hạn</th>
+            <th>Tỉnh/Thành phố cấp</th>
+            <th>Hành động</th> <!-- Cột cho hành động Xóa và Sửa -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var qualification in Model.EmployeeQualifications)
+        {
+            <tr>
+                <td>@qualification.QualificationName</td>
+                <td>@qualification.IssueDate.ToShortDateString()</td>
+                <td>@(qualification.ExpirationDate?.ToShortDateString() ?? "Không có")</td>
+                <td>@qualification.Province.ProvinceName</td>
+                <td>
+                    <!-- Nút Xóa -->
+                    <a href="@Url.Action("DeleteQualification", "Employee", new { qualificationId = qualification.Id, employeeId = Model.Id })" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa văn bằng này không?')">Xóa</a>
+
+                    <!-- Nút Sửa -->
+                    <a href="@Url.Action("EditQualification", "Employee", new { qualificationId = qualification.Id, employeeId = Model.Id })" class="btn btn-sm btn-primary">Sửa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<a href="@Url.Action("ListOfEmployee", "Employee")" class="btn btn-primary">Quay lại danh sách nhân viên</a>
+
+@if (Model.EmployeeQualifications.Count(q => q.ExpirationDate == null || q.ExpirationDate > DateTime.Now) < 3)
+{
+    <h3>Thêm văn bằng mới</h3>
+    @using (Html.BeginForm("AddQualification", "Employee", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="QualificationName">Tên văn bằng</label>
+            <input type="text" class="form-control" id="QualificationName" name="QualificationName" required />
+        </div>
+        <div class="form-group">
+            <label for="IssueDate">Ngày cấp</label>
+            <input type="date" class="form-control" id="IssueDate" name="IssueDate" required />
+        </div>
+        <div class="form-group">
+            <label for="ExpirationDate">Ngày hết hạn</label>
+            <input type="date" class="form-control" id="ExpirationDate" name="ExpirationDate" />
+        </div>
+        <div class="form-group">
+            <label for="ProvinceId">Tỉnh/Thành phố cấp văn bằng</label>
+            @Html.DropDownList("ProvinceId", new SelectList(ViewBag.Provinces, "ProvinceId", "ProvinceName"), "Chọn tỉnh/thành phố", new { @class = "form-control", required = "required" })
+        </div>
+        <input type="hidden" name="EmployeeId" value="@Model.Id" />
+        <button type="submit" class="btn btn-success">Thêm văn bằng</button>
+    }
+}
+else
+{
+    <div class="alert alert-warning">
+        Nhân viên này đã có 3 văn bằng chưa hết hạn và không thể thêm thêm văn bằng mới.
+    </div>
+}
+
+

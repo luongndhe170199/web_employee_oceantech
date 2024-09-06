@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OceanTechLevel1.Models.Employee>
+﻿@model IEnumerable<OceanTechLevel1.Models.EmployeeViewModel>
 
 @{
     ViewData["Title"] = "Danh sách Employee";
@@ -30,6 +30,7 @@
             <th>CCCD</th>
             <th>Số điện thoại</th>
             <th>Địa chỉ</th>
+            <th>Số văn bằng(chưa hết hạn )</th> <!-- Thêm cột số lượng văn bằng -->
             <th>Hành động</th>
         </tr>
     </thead>
@@ -47,6 +48,13 @@
                 <td>@employee.CitizenId</td>
                 <td>@employee.PhoneNumber</td>
                 <td>@employee.Province?.ProvinceName, @employee.District?.DistrictName, @employee.Commune?.CommuneName,@employee?.MoreInfo</td>
+                <td>
+                    <a href="@Url.Action("EmployeeQualifications", "Employee", new { employeeId = employee.Id })" class="text-primary">
+                        @employee.QualificationCount
+                    </a>
+                </td>
+
+                <!-- Hiển thị số lượng văn bằng -->
                 <td class="d-flex justify-content-between">
                     <a href="@Url.Action("Edit", "Employee", new { id = employee.Id })" class="btn btn-sm btn-primary ">Sửa</a>
                     <a href="@Url.Action("Delete", "Employee", new { id = employee.Id })" class="btn btn-sm btn-danger ">Xóa</a>

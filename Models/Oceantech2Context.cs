@@ -21,6 +21,8 @@ public partial class Oceantech2Context : DbContext
 
     public virtual DbSet<Employee> Employees { get; set; }
 
+    public virtual DbSet<EmployeeQualification> EmployeeQualifications { get; set; }
+
     public virtual DbSet<Ethnicity> Ethnicities { get; set; }
 
     public virtual DbSet<Occupation> Occupations { get; set; }
@@ -122,6 +124,23 @@ public partial class Oceantech2Context : DbContext
             entity.HasOne(d => d.Province).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.ProvinceId)
                 .HasConstraintName("FK__Employee__provin__59FA5E80");
+        });
+
+        modelBuilder.Entity<EmployeeQualification>(entity =>
+        {
+            entity.Property(e => e.ExpirationDate).HasColumnType("date");
+            entity.Property(e => e.IssueDate).HasColumnType("date");
+            entity.Property(e => e.QualificationName).HasMaxLength(100);
+
+            entity.HasOne(d => d.Employee).WithMany(p => p.EmployeeQualifications)
+                .HasForeignKey(d => d.EmployeeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_EmployeeQualifications_Employee");
+
+            entity.HasOne(d => d.Province).WithMany(p => p.EmployeeQualifications)
+                .HasForeignKey(d => d.ProvinceId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_EmployeeQualifications_Province");
         });
 
         modelBuilder.Entity<Ethnicity>(entity =>

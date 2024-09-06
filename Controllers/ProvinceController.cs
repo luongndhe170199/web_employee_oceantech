@@ -114,6 +114,11 @@ namespace OceanTechLevel1.Controllers
                                               .ToList();
             _context.Employees.RemoveRange(employeesInCommunes);
 
+            // Xóa tất cả các văn bằng liên quan đến tỉnh
+            var qualificationsInProvince = _context.EmployeeQualifications
+                                                   .Where(eq => eq.ProvinceId == id)
+                                                   .ToList();
+            _context.EmployeeQualifications.RemoveRange(qualificationsInProvince);
             // Xóa tất cả các xã liên quan
             foreach (var district in province.Districts)
             {
