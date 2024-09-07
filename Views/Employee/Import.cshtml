@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Import Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Import Employee</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" id="error-message">
+        @Html.Raw(TempData["ErrorMessage"])
+    </div>
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Sử dụng jQuery (nếu có)
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('#success-message').fadeOut('slow');
+            $('#error-message').fadeOut('slow');
+        }, 2000); // 2000ms = 2 giây
+    });
+</script>
+
+<form action="/employee/Import" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="employeeFile">Chọn file Excel</label>
+        <input type="file" name="employeeFile" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload và Import</button>
+</form>

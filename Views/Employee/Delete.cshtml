@@ -16,6 +16,14 @@
             <th>Ngày sinh</th>
             <td>@Model.BirthDate.ToShortDateString()</td>
         </tr>
+        <tr>
+            <th>Tuổi</th>
+            <td>@Model.Age</td>
+        </tr>
+        <tr>
+            <th>CCCD</th>
+            <td>@Model.CitizenId</td>
+        </tr>
     </table>
     <button type="submit" class="btn btn-danger">Xóa</button>
     <a href="/employee/ListOfEmployee" class="btn btn-dark">Cancel</a>

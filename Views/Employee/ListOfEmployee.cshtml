@@ -5,9 +5,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <meta charset="UTF-8">
+<h2>Danh sách Employee</h2>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" id="success-message">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Sử dụng jQuery (nếu có)
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('#success-message').fadeOut('slow');
+            $('#error-message').fadeOut('slow');
+        }, 2000); // 2000ms = 2 giây
+    });
+</script>
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Danh sách Employee</h2>
-
+   
+    <a href="@Url.Action("Create", "Employee")" class="btn btn-info">Thêm Employee mới</a>
+    <!-- Nút dẫn đến trang Import -->
+    <a href="@Url.Action("Import", "Employee")" class="btn btn-info">Import Employee</a>
     @using (Html.BeginForm("ListOfEmployee", "Employee", FormMethod.Get))
     {
         <div class="input-group" style="width: 300px;">
@@ -16,10 +35,12 @@
         </div>
     }
 </div>
-
+@using (Html.BeginForm("ExportSelectedEmployees", "Employee", FormMethod.Post))
+{
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            <th><input type="checkbox" id="selectAll" /></th>
             <th>ID</th>
             <th>Họ tên</th>
             <th>Ngày sinh</th>
@@ -38,6 +59,7 @@
         @foreach (var employee in Model)
         {
             <tr>
+                <td><input type="checkbox" name="selectedEmployees" value="@employee.Id" /></td> <!-- Thêm checkbox cho mỗi nhân viên -->
                 <td>@employee.Id</td>
                 <td>@employee.FullName</td>
                 <td>@employee.BirthDate.ToShortDateString()</td>
@@ -63,5 +85,22 @@
         }
     </tbody>
 </table>
+<div class="d-flex justify-content-between align-items-center mb-3">
+        <button type="submit" class="btn btn-success">Export Selected Employees</button>
+        <div class="d-flex justify-content-end mb-3">
+            <a href="@Url.Action("ExportEmployees", "Employee", new { searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })" class="btn btn-success">Export Search Results</a>
+        </div>
+</div>
+   
+    <script>
+        document.getElementById("selectAll").addEventListener("click", function () {
+            var checkboxes = document.querySelectorAll('input[name="selectedEmployees"]');
+            for (var checkbox of checkboxes) {
+                checkbox.checked = this.checked;
+            }
+        });
+    </script>
+}
 
-<a href="@Url.Action("Create", "Employee")" class="btn btn-success">Thêm Employee mới</a>
+
+

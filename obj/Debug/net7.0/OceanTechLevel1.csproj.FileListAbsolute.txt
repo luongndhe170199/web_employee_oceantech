@@ -156,3 +156,10 @@ C:\OceanTech\web_employee_oceantech\obj\Debug\net7.0\refint\OceanTechLevel1.dll
 C:\OceanTech\web_employee_oceantech\obj\Debug\net7.0\OceanTechLevel1.pdb
 C:\OceanTech\web_employee_oceantech\obj\Debug\net7.0\OceanTechLevel1.genruntimeconfig.cache
 C:\OceanTech\web_employee_oceantech\obj\Debug\net7.0\ref\OceanTechLevel1.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\ClosedXML.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\DocumentFormat.OpenXml.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\ExcelNumberFormat.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Irony.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\SixLabors.Fonts.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.IO.Packaging.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\XLParser.dll
