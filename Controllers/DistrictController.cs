@@ -15,7 +15,7 @@ namespace OceanTechLevel1.Controllers
             _context = context;
         }
 
-        public ActionResult Index(string searchTerm)
+        public ActionResult Index(string searchTerm, int page = 1)
         {
             var districts = _context.Districts.Include(d => d.Province).AsQueryable();
 
@@ -28,8 +28,18 @@ namespace OceanTechLevel1.Controllers
                 districts = districts.Where(d => d.DistrictName.Trim().ToLower().Contains(searchTerm) ||
                                                  d.Province.ProvinceName.Trim().ToLower().Contains(searchTerm));
             }
+            var districtList= districts.ToList();
+            // Paging 
+            int NoOfRecordPerPage = 5;
+            int NoOfPages = Convert.ToInt32(Math.Ceiling
+                (Convert.ToDouble(districtList.Count) / Convert.ToDouble
+                (NoOfRecordPerPage)));
 
-            return View(districts.ToList());
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = page;
+            ViewBag.NoOfPages = NoOfPages;
+            districtList = districtList.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage).ToList();
+            return View(districtList);
         }
 
 

@@ -1,0 +1,52 @@
+﻿/* Viền bao quanh header full màn hình */
+header {
+    border: 2px solid #000; /* Viền bao quanh header */
+    width: 100vw; /* Đảm bảo header full chiều rộng màn hình */
+    box-sizing: border-box; /* Đảm bảo viền không làm thay đổi kích thước */
+    padding: 10px 0;
+    margin: 0; /* Loại bỏ khoảng cách margin */
+}
+
+/* Viền bao quanh main full màn hình và sát với header */
+main {
+    border: 2px solid #000; /* Viền bao quanh main */
+    width: 100vw; /* Đảm bảo main full chiều rộng màn hình */
+    box-sizing: border-box; /* Đảm bảo viền không làm thay đổi kích thước */
+    padding: 20px 0;
+    margin: 0; /* Loại bỏ khoảng cách margin */
+}
+
+/* Định dạng cho phần nav-tab */
+nav.nav-tabs-container {
+    width: 95%; /* Đảm bảo chiều rộng của nav bằng với form-container */
+    margin: 0 auto; /* Căn giữa phần nav */
+    margin-bottom: 0; /* Loại bỏ khoảng cách phía dưới */
+}
+
+nav.nav-tabs {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%; /* Chiều rộng full cho nav */
+    margin-bottom: 0; /* Loại bỏ khoảng cách phía dưới */
+}
+
+.nav-tabs .nav-link {
+    margin-right: 5px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+/* Loại bỏ khoảng cách giữa nav-tabs và main */
+.nav-tabs + main {
+    margin-top: 0; /* Loại bỏ khoảng cách giữa nav và main */
+}
+
+/* Định dạng cho phần main nội dung */
+.form-container {
+    border: 2px solid #000; /* Viền bao quanh form */
+    border-radius: 10px; /* Góc bo tròn */
+    padding: 20px;
+    margin: 20px auto;
+    width: 95%; /* Đảm bảo nội dung bên trong có khoảng cách với viền */
+}

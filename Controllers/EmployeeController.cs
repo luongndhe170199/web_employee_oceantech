@@ -77,7 +77,7 @@ namespace OceanTechLevel1.Controllers
         }
 
 
-        public ActionResult ListOfEmployee(string searchTerm)
+        public ActionResult ListOfEmployee(string searchTerm, int page=1)
         {
             var employees = _context.Employees
                 .Include(e => e.Ethnicity)
@@ -117,8 +117,19 @@ namespace OceanTechLevel1.Controllers
                                                  (e.District != null && e.District.DistrictName.Trim().ToLower().Contains(searchTerm)) ||
                                                  (e.Commune != null && e.Commune.CommuneName.Trim().ToLower().Contains(searchTerm)));
             }
-
+           
             var employeesList = employees.ToList();
+            // Paging 
+            int NoOfRecordPerPage = 10;
+            int NoOfPages = Convert.ToInt32(Math.Ceiling
+                (Convert.ToDouble(employeesList.Count) / Convert.ToDouble
+                (NoOfRecordPerPage)));
+
+            int NoOfRecordToSkip = (page -1)*NoOfRecordPerPage ;
+            ViewBag.Page = page;
+            ViewBag.NoOfPages=NoOfPages;
+            employeesList=employeesList.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage).ToList();
+
             return View(employeesList);
         }
 

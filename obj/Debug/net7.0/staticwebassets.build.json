@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DmiBqZEiKa9fUm5WNC1BRKQHh5IqDP3RQh/SSLy/YCA=",
+  "Hash": "P4SERLjXzXPdEnqS3KuAYT1dmHtjOnpRYN0F6zc2/qI=",
   "Source": "OceanTechLevel1",
   "BasePath": "_content/OceanTechLevel1",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\OceanTech\\web_employee_oceantech\\wwwroot\\css\\style.css",
+      "SourceId": "OceanTechLevel1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\OceanTech\\web_employee_oceantech\\wwwroot\\",
+      "BasePath": "_content/OceanTechLevel1",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "C:\\OceanTech\\web_employee_oceantech\\wwwroot\\favicon.ico",

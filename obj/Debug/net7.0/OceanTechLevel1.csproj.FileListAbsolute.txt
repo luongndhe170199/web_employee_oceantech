@@ -163,3 +163,13 @@ C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Irony.dll
 C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\SixLabors.Fonts.dll
 C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.IO.Packaging.dll
 C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\XLParser.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.Web.Mvc.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.Web.Razor.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.Web.Helpers.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\System.Web.WebPages.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\X.PagedList.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\X.PagedList.Mvc.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\X.PagedList.Web.Common.dll

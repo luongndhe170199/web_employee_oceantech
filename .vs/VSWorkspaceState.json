@@ -7,6 +7,6 @@
     "\\Views\\Employee",
     "\\Views\\Province"
   ],
-  "SelectedNode": "\\Controllers\\EmployeeController.cs",
+  "SelectedNode": "\\Views\\Commune\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

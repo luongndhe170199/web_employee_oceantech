@@ -14,7 +14,7 @@ namespace OceanTechLevel1.Controllers
             _context = context;
         }
 
-        public ActionResult Index(string searchTerm)
+        public ActionResult Index(string searchTerm, int page = 1)
         {
             var provinces = _context.Provinces.AsQueryable();
 
@@ -24,8 +24,18 @@ namespace OceanTechLevel1.Controllers
                 searchTerm = searchTerm.ToLower().Trim(); // Chuyển từ khóa tìm kiếm thành chữ thường và loại bỏ khoảng trắng
                 provinces = provinces.Where(p => p.ProvinceName.ToLower().Contains(searchTerm));
             }
+            var provinceList= provinces.ToList();
+            // Paging 
+            int NoOfRecordPerPage = 5;
+            int NoOfPages = Convert.ToInt32(Math.Ceiling
+                (Convert.ToDouble(provinceList.Count) / Convert.ToDouble
+                (NoOfRecordPerPage)));
 
-            return View(provinces.ToList());
+            int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = page;
+            ViewBag.NoOfPages = NoOfPages;
+            provinceList = provinceList.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage).ToList();
+            return View(provinceList);
         }
 
         public ActionResult Create()
