@@ -5,8 +5,10 @@
     "\\Views",
     "\\Views\\Commune",
     "\\Views\\Employee",
-    "\\Views\\Province"
+    "\\Views\\Province",
+    "\\wwwroot",
+    "\\wwwroot\\css"
   ],
-  "SelectedNode": "\\Views\\Employee\\Create.cshtml",
+  "SelectedNode": "\\wwwroot\\css\\style.css",
   "PreviewInSolutionExplorer": false
 }
