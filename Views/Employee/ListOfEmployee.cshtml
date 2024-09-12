@@ -68,7 +68,7 @@
                 <td>@employee.Occupation?.OccupationName</td>
                 <td>@employee.Position?.PositionName</td>
                 <td>@employee.CitizenId</td>
-                <td>@employee.PhoneNumber</td>
+                <td>@(!string.IsNullOrEmpty(employee.PhoneNumber) ? employee.PhoneNumber : "Chưa được cung cấp")</td>
                 <td>@employee.Province?.ProvinceName, @employee.District?.DistrictName, @employee.Commune?.CommuneName,@employee?.MoreInfo</td>
                 <td>
                     <a href="@Url.Action("EmployeeQualifications", "Employee", new { employeeId = employee.Id })" class="text-primary">

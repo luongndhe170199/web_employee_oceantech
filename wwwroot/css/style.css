@@ -12,7 +12,7 @@ main {
     border: 2px solid #000; /* Viền bao quanh main */
     width: 100vw; /* Đảm bảo main full chiều rộng màn hình */
     box-sizing: border-box; /* Đảm bảo viền không làm thay đổi kích thước */
-    padding: 20px 0;
+    padding: 40px 0;
     margin: 0; /* Loại bỏ khoảng cách margin */
 }
 
@@ -49,4 +49,14 @@ nav.nav-tabs {
     padding: 20px;
     margin: 20px auto;
     width: 95%; /* Đảm bảo nội dung bên trong có khoảng cách với viền */
+    position: relative;
+    padding-bottom: 60px; /* Tạo khoảng trống cho các nút */
+}
+.form-buttons {
+    position: absolute;
+    bottom: -60px; /* Di chuyển xuống dưới viền của form-container */
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    width: 100%;
 }

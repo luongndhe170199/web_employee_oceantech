@@ -55,6 +55,12 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Create(Employee p)
         {
+            // Kiểm tra nếu người dùng chọn checkbox "Không có SĐT"
+            if (Request.Form["NoPhoneNumber"] == "on")
+            {
+                p.PhoneNumber = null; // hoặc đặt một giá trị mặc định, ví dụ: "Chưa được cung cấp"
+            }
+
             if (string.IsNullOrEmpty(p.CitizenId))
             {
                 ModelState.AddModelError("CitizenId", "CCCD không được để trống.");
@@ -75,7 +81,6 @@ namespace OceanTechLevel1.Controllers
             _context.SaveChanges();
             return RedirectToAction("ListOfEmployee");
         }
-
 
         public ActionResult ListOfEmployee(string searchTerm, int page=1)
         {
@@ -147,6 +152,12 @@ namespace OceanTechLevel1.Controllers
         [HttpPost]
         public ActionResult Edit(Employee emp)
         {
+
+            // Kiểm tra nếu người dùng chọn checkbox "Không có SĐT"
+            if (Request.Form["NoPhoneNumber"] == "on")
+            {
+                emp.PhoneNumber = null; // Đặt giá trị null nếu chọn "Không có SĐT"
+            }
             Employee employee = _context.Employees.Where(row => row.Id == emp.Id).FirstOrDefault();
 
             // Kiểm tra nếu CCCD đã tồn tại trong hệ thống và không phải của nhân viên hiện tại
@@ -517,7 +528,7 @@ namespace OceanTechLevel1.Controllers
                         employee.FullName = worksheet.Cell(row, 1).GetString();
 
                         // Sử dụng TryParse để đảm bảo ngày hợp lệ
-                        if (DateTime.TryParse(worksheet.Cell(row, 2).GetString(), out DateTime birthDate))
+                        if (DateTime.TryParse(worksheet.Cell(row, 2).GetString().Trim(), out DateTime birthDate))
                         {
                             employee.BirthDate = birthDate;
                             // Tính tuổi từ ngày sinh
@@ -562,11 +573,20 @@ namespace OceanTechLevel1.Controllers
                         }
 
                         // Lấy SDT (Số điện thoại)
-                        employee.PhoneNumber = worksheet.Cell(row, 8).GetString();
-                        if (!string.IsNullOrEmpty(employee.PhoneNumber) && !Regex.IsMatch(employee.PhoneNumber, @"^0\d{9,14}$"))
+                        var phoneNumber = worksheet.Cell(row, 8).GetString();
+                        if (string.IsNullOrEmpty(phoneNumber))
+                        {
+                            employee.PhoneNumber = null; // Không có số điện thoại, lưu là null
+                        }
+                        else if (!Regex.IsMatch(phoneNumber, @"^0\d{9,14}$"))
                         {
                             throw new Exception($"Dòng {row}: Số điện thoại không hợp lệ.");
                         }
+                        else
+                        {
+                            employee.PhoneNumber = phoneNumber; // Nếu có số điện thoại hợp lệ
+                        }
+
 
                         // Lấy Tỉnh
                         var provinceName = worksheet.Cell(row, 9).GetString();

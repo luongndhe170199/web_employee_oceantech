@@ -82,6 +82,12 @@
         <label for="PhoneNumber" class="col-sm-2 col-form-label">8. Số điện thoại</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" />
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="NoPhoneNumber" name="NoPhoneNumber" @(Model.PhoneNumber == null ? "checked" : "")>
+                <label class="form-check-label" for="NoPhoneNumber">
+                    Không có SĐT
+                </label>
+            </div>
         </div>
     </div>
     <div class="row mb-3">
@@ -212,12 +218,14 @@
             errorMessage += 'CCCD phải có từ 10 đến 50 kí tự.\n';
         }
 
-        // Validate PhoneNumber
-        var phoneNumber = $('#PhoneNumber').val().trim();
-        var phonePattern = /^0\d{9,14}$/; // Bắt đầu bằng số 0 và có từ 10 đến 15 ký tự
-        if (!phonePattern.test(phoneNumber)) {
-            isValid = false;
-            errorMessage += 'Số điện thoại phải bắt đầu bằng số 0 và có từ 10 đến 15 kí tự.\n';
+        // Kiểm tra nếu checkbox "Không có SĐT" không được chọn thì mới validate số điện thoại
+        if (!$('#NoPhoneNumber').is(':checked')) {
+            var phoneNumber = $('#PhoneNumber').val().trim();
+            var phonePattern = /^0\d{9,14}$/; // Bắt đầu bằng số 0 và có từ 10 đến 15 ký tự
+            if (!phonePattern.test(phoneNumber)) {
+                isValid = false;
+                errorMessage += 'Số điện thoại phải bắt đầu bằng số 0 và có từ 10 đến 15 kí tự.\n';
+            }
         }
 
 
@@ -225,6 +233,15 @@
         if (!isValid) {
             alert(errorMessage);
             event.preventDefault();
+        }
+    });
+
+    // Xử lý sự kiện khi checkbox "Không có SĐT" thay đổi
+    $('#NoPhoneNumber').change(function () {
+        if ($(this).is(':checked')) {
+            $('#PhoneNumber').val('').prop('disabled', true); // Xóa giá trị và vô hiệu hóa trường số điện thoại
+        } else {
+            $('#PhoneNumber').prop('disabled', false); // Bật lại trường số điện thoại
         }
     });
 

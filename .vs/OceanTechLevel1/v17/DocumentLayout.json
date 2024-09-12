@@ -3,6 +3,74 @@
   "WorkspaceRootPath": "C:\\OceanTech\\web_employee_oceantech\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\employee\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\employee\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\employee\\listofemployee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\employee\\listofemployee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\controllers\\provincecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:controllers\\provincecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\province\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\province\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\employee\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\employee\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\employee\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\employee\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\employee\\employeequalifications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\employee\\employeequalifications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\models\\employeequalification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:models\\employeequalification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\models\\employeeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:models\\employeeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:models\\district.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\views\\employee\\editqualification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:views\\employee\\editqualification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|c:\\oceantech\\web_employee_oceantech\\controllers\\districtcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D26C773-5C64-478E-AFA4-F2A2018F8B7E}|OceanTechLevel1.csproj|solutionrelative:controllers\\districtcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 384,
-          "SelectedChildIndex": 99,
+          "SelectedChildIndex": 100,
           "Children": [
             {
               "$type": "Bookmark",
@@ -414,16 +482,221 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Province\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Province\\Index.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Province\\Index.cshtml",
+              "RelativeToolTip": "Views\\Province\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-12T09:20:08.172Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\wwwroot\\css\\style.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\style.css",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\wwwroot\\css\\style.css",
+              "RelativeToolTip": "wwwroot\\css\\style.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-12T08:34:23.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAADgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-12T08:26:31.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Delete.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Delete.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-10T01:35:21.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Edit.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Edit.cshtml",
+              "ViewState": "AQIAADcAAAAAAAAAAAAcwFgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-09T23:53:28.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ListOfEmployee.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\ListOfEmployee.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\ListOfEmployee.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\ListOfEmployee.cshtml",
+              "RelativeToolTip": "Views\\Employee\\ListOfEmployee.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHQAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-10T00:02:30.287Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\Create.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\Create.cshtml",
+              "RelativeToolTip": "Views\\Employee\\Create.cshtml",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAcwHkAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-09T23:57:37.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:56:55.686Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EmployeeQualification.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Models\\EmployeeQualification.cs",
+              "RelativeDocumentMoniker": "Models\\EmployeeQualification.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Models\\EmployeeQualification.cs",
+              "RelativeToolTip": "Models\\EmployeeQualification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:56:53.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EmployeeViewModel.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Models\\EmployeeViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\EmployeeViewModel.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Models\\EmployeeViewModel.cs",
+              "RelativeToolTip": "Models\\EmployeeViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:56:51.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "District.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Models\\District.cs",
+              "RelativeDocumentMoniker": "Models\\District.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Models\\District.cs",
+              "RelativeToolTip": "Models\\District.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:56:46.528Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "Models\\Employee.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Models\\Employee.cs",
+              "RelativeToolTip": "Models\\Employee.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:56:16.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "EditQualification.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\EditQualification.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\EditQualification.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\EditQualification.cshtml",
+              "RelativeToolTip": "Views\\Employee\\EditQualification.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-09T23:53:57.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:53:43.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EmployeeQualifications.cshtml",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\EmployeeQualifications.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employee\\EmployeeQualifications.cshtml",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Views\\Employee\\EmployeeQualifications.cshtml",
+              "RelativeToolTip": "Views\\Employee\\EmployeeQualifications.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-09T23:53:16.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "Controllers\\EmployeeController.cs",
+              "ViewState": "AQIAAAkCAAAAAAAAAAAcwGQCAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:48:20.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProvinceController.cs",
+              "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Controllers\\ProvinceController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProvinceController.cs",
+              "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Controllers\\ProvinceController.cs",
+              "RelativeToolTip": "Controllers\\ProvinceController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T23:47:59.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "DistrictController.cs",
               "DocumentMoniker": "C:\\OceanTech\\web_employee_oceantech\\Controllers\\DistrictController.cs",
               "RelativeDocumentMoniker": "Controllers\\DistrictController.cs",
               "ToolTip": "C:\\OceanTech\\web_employee_oceantech\\Controllers\\DistrictController.cs",
               "RelativeToolTip": "Controllers\\DistrictController.cs",
-              "ViewState": "AQIAAFsAAAAAAAAAAAAcwAAAAAAAAAAA",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T23:45:46.561Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T23:45:46.561Z"
             }
           ]
         },
