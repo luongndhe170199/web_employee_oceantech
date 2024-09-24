@@ -1,62 +1,118 @@
-﻿/* Viền bao quanh header full màn hình */
+﻿/* Giao diện màu tối */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+/* Viền bao quanh header full màn hình */
 header {
-    border: 2px solid #000; /* Viền bao quanh header */
-    width: 100vw; /* Đảm bảo header full chiều rộng màn hình */
-    box-sizing: border-box; /* Đảm bảo viền không làm thay đổi kích thước */
-    padding: 10px 0;
-    margin: 0; /* Loại bỏ khoảng cách margin */
+    border: 2px solid #1f1f1f;
+    background-color: #1e1e1e;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 20px 0;
+    margin: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Viền bao quanh main full màn hình và sát với header */
 main {
-    border: 2px solid #000; /* Viền bao quanh main */
-    width: 100vw; /* Đảm bảo main full chiều rộng màn hình */
-    box-sizing: border-box; /* Đảm bảo viền không làm thay đổi kích thước */
+    border: 2px solid #1f1f1f;
+    background-color: #1e1e1e;
+    width: 100vw;
+    box-sizing: border-box;
     padding: 40px 0;
-    margin: 0; /* Loại bỏ khoảng cách margin */
+    margin: 0;
 }
 
 /* Định dạng cho phần nav-tab */
 nav.nav-tabs-container {
-    width: 95%; /* Đảm bảo chiều rộng của nav bằng với form-container */
-    margin: 0 auto; /* Căn giữa phần nav */
-    margin-bottom: 0; /* Loại bỏ khoảng cách phía dưới */
+    width: 95%;
+    margin: 0 auto;
 }
 
 nav.nav-tabs {
-    border: 2px solid #000;
+    background-color: #2e2e2e;
+    border: 2px solid #3a3a3a;
     border-radius: 5px;
     padding: 5px;
-    width: 100%; /* Chiều rộng full cho nav */
-    margin-bottom: 0; /* Loại bỏ khoảng cách phía dưới */
+    width: 100%;
+    margin-bottom: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .nav-tabs .nav-link {
     margin-right: 5px;
-    border: 2px solid #000;
+    border: 2px solid #3a3a3a;
     border-radius: 5px;
+    color: #e0e0e0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Loại bỏ khoảng cách giữa nav-tabs và main */
-.nav-tabs + main {
-    margin-top: 0; /* Loại bỏ khoảng cách giữa nav và main */
-}
+    .nav-tabs .nav-link:hover {
+        background-color: #555;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
 
-/* Định dạng cho phần main nội dung */
+    .nav-tabs .nav-link.active {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #0056b3;
+    }
+
+/* Định dạng cho form-container */
 .form-container {
-    border: 2px solid #000; /* Viền bao quanh form */
-    border-radius: 10px; /* Góc bo tròn */
+    background-color: #2b2b2b;
+    border: 2px solid #3a3a3a;
+    border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
-    width: 95%; /* Đảm bảo nội dung bên trong có khoảng cách với viền */
+    width: 95%;
     position: relative;
-    padding-bottom: 60px; /* Tạo khoảng trống cho các nút */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
+
 .form-buttons {
     position: absolute;
-    bottom: -60px; /* Di chuyển xuống dưới viền của form-container */
+    bottom: -60px;
     left: 0;
     right: 0;
     padding: 10px 0;
     width: 100%;
+}
+
+/* Footer */
+footer {
+    background-color: #1e1e1e;
+    padding: 20px 0;
+    color: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Button styling */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    button:hover {
+        background-color: #0056b3;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+/* Shadow effect for all sections */
+.header, .nav-tabs, .form-container, footer {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Text shadows for a futuristic effect */
+h1, h2, h3, h4, h5, h6 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }

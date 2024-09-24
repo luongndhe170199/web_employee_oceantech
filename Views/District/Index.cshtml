@@ -61,9 +61,8 @@
 
                     }
                     <ul class="pagination justify-content-center">
-
                         <li class="page-item ">
-                            <a class="page-link" href="/District/index?page=@PrevPage">
+                            <a class="page-link" href="@Url.Action("Index", "District",new { page = PrevPage, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
                                 Prev
                             </a>
                         </li>
@@ -72,7 +71,7 @@
                             if (i + 1 == ViewBag.Page)
                             {
                                 <li class="page-item active">
-                                    <a class="page-link" href="/District/index?page=@(i+1)">
+                                    <a class="page-link" href="@Url.Action("Index", "District", new { page = (i + 1), searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
                                         @(i + 1)
                                     </a>
                                 </li>
@@ -80,15 +79,14 @@
                             else
                             {
                                 <li class="page-item ">
-                                    <a class="page-link" href="/District/index?page=@(i+1)">
+                                    <a class="page-link" href="@Url.Action("Index", "District", new { page = (i + 1), searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
                                         @(i + 1)
                                     </a>
                                 </li>
                             }
-
                         }
                         <li class="page-item active">
-                            <a class="page-link" href="/District/index?page=@NextPage">
+                            <a class="page-link" href="@Url.Action("Index", "District", new { page = NextPage, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
                                 Next
                             </a>
                         </li>

@@ -2,13 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Controllers",
+    "\\Services",
     "\\Views",
     "\\Views\\Commune",
-    "\\Views\\Employee",
-    "\\Views\\Province",
     "\\wwwroot",
     "\\wwwroot\\css"
   ],
-  "SelectedNode": "\\wwwroot\\css\\style.css",
+  "SelectedNode": "\\Services\\EmployeeService.cs",
   "PreviewInSolutionExplorer": false
 }
