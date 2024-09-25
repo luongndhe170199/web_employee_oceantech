@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OceanTechLevel1.Constants;
 using OceanTechLevel1.Models;
 using OceanTechLevel1.Services;
 
@@ -13,9 +14,9 @@ namespace OceanTechLevel1.Controllers
             _provinceService = provinceService;
         }
 
-        public ActionResult Index(string searchTerm, int page = 1)
+        public ActionResult Index(string searchTerm, int page = ValidationConstants.DefaultPage)
         {
-            int NoOfRecordPerPage = 5;
+            int NoOfRecordPerPage = ValidationConstants.DefaultNoOfRecordsPerPage;
             var provinces = _provinceService.GetProvinces(searchTerm, page, NoOfRecordPerPage, out int NoOfPages);
             ViewBag.Page = page;
             ViewBag.NoOfPages = NoOfPages;

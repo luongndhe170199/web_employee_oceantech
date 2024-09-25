@@ -54,27 +54,49 @@ namespace OceanTechLevel1.Services
 
         public void DeleteProvince(Province province)
         {
-            var employeesInCommunes = _context.Employees
-                                              .Where(e => e.CommuneId.HasValue &&
-                                                          _context.Communes.Any(c => c.CommuneId == e.CommuneId.Value &&
-                                                                                     _context.Districts.Any(d => d.DistrictId == c.DistrictId &&
-                                                                                                                 _context.Provinces.Any(p => p.ProvinceId == d.ProvinceId &&
-                                                                                                                                               p.ProvinceId == province.ProvinceId))))
-                                              .ToList();
-            _context.Employees.RemoveRange(employeesInCommunes);
+            // Tải tỉnh cùng với tất cả các thực thể liên quan
+            var provinceToDelete = _context.Provinces
+                .Include(p => p.Districts)
+                .ThenInclude(d => d.Communes)
+                .Include(p => p.Employees)
+                .ThenInclude(e => e.EmployeeQualifications)  // Tải thêm EmployeeQualifications
+                .Include(p => p.EmployeeQualifications)
+                .FirstOrDefault(p => p.ProvinceId == province.ProvinceId);
 
-            var qualificationsInProvince = _context.EmployeeQualifications.Where(eq => eq.ProvinceId == province.ProvinceId).ToList();
-            _context.EmployeeQualifications.RemoveRange(qualificationsInProvince);
-
-            foreach (var district in province.Districts)
+            if (provinceToDelete != null)
             {
-                _context.Communes.RemoveRange(district.Communes);
+                // Xóa các văn bằng của nhân viên trước
+                foreach (var employee in provinceToDelete.Employees)
+                {
+                    foreach (var qualification in employee.EmployeeQualifications)
+                    {
+                        _context.EmployeeQualifications.Remove(qualification);
+                    }
+                }
+
+                // Xóa các nhân viên
+                foreach (var employee in provinceToDelete.Employees)
+                {
+                    _context.Employees.Remove(employee);
+                }
+
+                // Xóa các xã và huyện liên quan
+                foreach (var district in provinceToDelete.Districts)
+                {
+                    foreach (var commune in district.Communes)
+                    {
+                        _context.Communes.Remove(commune);
+                    }
+                    _context.Districts.Remove(district);
+                }
+
+                // Xóa tỉnh
+                _context.Provinces.Remove(provinceToDelete);
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                _context.SaveChanges();
             }
-
-            _context.Districts.RemoveRange(province.Districts);
-            _context.Provinces.Remove(province);
-
-            _context.SaveChanges();
         }
+
     }
 }

@@ -62,9 +62,36 @@ namespace OceanTechLevel1.Services
 
         public void DeleteCommune(Commune commune)
         {
-            _context.Employees.RemoveRange(commune.Employees);
-            _context.Communes.Remove(commune);
-            _context.SaveChanges();
+            // Tải xã cùng với các nhân viên liên quan
+            var communeToDelete = _context.Communes
+                .Include(c => c.Employees)  // Tải các nhân viên liên quan đến xã
+                .ThenInclude(e => e.EmployeeQualifications)  // Tải thêm các văn bằng của nhân viên
+                .FirstOrDefault(c => c.CommuneId == commune.CommuneId);
+
+            if (communeToDelete != null)
+            {
+                // Xóa các văn bằng của nhân viên trước
+                foreach (var employee in communeToDelete.Employees)
+                {
+                    foreach (var qualification in employee.EmployeeQualifications)
+                    {
+                        _context.EmployeeQualifications.Remove(qualification);
+                    }
+                }
+
+                // Xóa các nhân viên trong xã
+                foreach (var employee in communeToDelete.Employees)
+                {
+                    _context.Employees.Remove(employee);
+                }
+
+                // Cuối cùng, xóa xã
+                _context.Communes.Remove(communeToDelete);
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                _context.SaveChanges();
+            }
         }
+
     }
 }

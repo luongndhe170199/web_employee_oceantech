@@ -1,4 +1,4 @@
-﻿using OceanTechLevel1.Constants; // Thêm dòng này để import hằng số từ ValidationConstants
+﻿using OceanTechLevel1.Constants; 
 using OceanTechLevel1.Models;
 using System;
 using System.Collections.Generic;

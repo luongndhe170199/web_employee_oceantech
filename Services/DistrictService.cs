@@ -55,10 +55,43 @@ namespace OceanTechLevel1.Services
 
         public void DeleteDistrict(District district)
         {
-            _context.Communes.RemoveRange(district.Communes);
-            _context.Employees.RemoveRange(district.Employees);
-            _context.Districts.Remove(district);
-            _context.SaveChanges();
+            // Tải huyện cùng với các xã và nhân viên liên quan
+            var districtToDelete = _context.Districts
+                .Include(d => d.Communes)
+                .Include(d => d.Employees)
+                .ThenInclude(e => e.EmployeeQualifications)  // Tải thêm văn bằng của nhân viên
+                .FirstOrDefault(d => d.DistrictId == district.DistrictId);
+
+            if (districtToDelete != null)
+            {
+                // Xóa các văn bằng của nhân viên trước
+                foreach (var employee in districtToDelete.Employees)
+                {
+                    foreach (var qualification in employee.EmployeeQualifications)
+                    {
+                        _context.EmployeeQualifications.Remove(qualification);
+                    }
+                }
+
+                // Xóa các nhân viên
+                foreach (var employee in districtToDelete.Employees)
+                {
+                    _context.Employees.Remove(employee);
+                }
+
+                // Xóa các xã liên quan
+                foreach (var commune in districtToDelete.Communes)
+                {
+                    _context.Communes.Remove(commune);
+                }
+
+                // Cuối cùng, xóa huyện
+                _context.Districts.Remove(districtToDelete);
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                _context.SaveChanges();
+            }
         }
+
     }
 }

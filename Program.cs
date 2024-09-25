@@ -1,7 +1,7 @@
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Microsoft.EntityFrameworkCore;
 using OceanTechLevel1.Models;
-using OceanTechLevel1.Services; // ??m b?o b?n import ?úng namespace c?a các d?ch v?
+using OceanTechLevel1.Services; 
 
 namespace OceanTechLevel1
 {
@@ -18,7 +18,7 @@ namespace OceanTechLevel1
             builder.Services.AddDbContext<Oceantech2Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
-            // ??ng ký các d?ch v? c?a b?n t?i ?ây
+            // Service
             builder.Services.AddScoped<EmployeeService>();  
             builder.Services.AddScoped<ExportImportService>();    
             builder.Services.AddScoped<QualificationService>();

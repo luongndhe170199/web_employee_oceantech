@@ -9,5 +9,8 @@
         // Constants for Phone Number validation
         public const int PhoneNumberMinLength = 9;
         public const int PhoneNumberMaxLength = 14;
+        //Constants for  page
+        public const int DefaultPage = 1;
+        public const int DefaultNoOfRecordsPerPage = 10;
     }
 }

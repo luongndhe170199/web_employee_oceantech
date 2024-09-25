@@ -7,6 +7,7 @@ using System.Text.Json;
 using ClosedXML.Excel;
 using System.Text.RegularExpressions;
 using OceanTechLevel1.Services;
+using OceanTechLevel1.Constants;
 namespace OceanTechLevel1.Controllers
 {
     public class EmployeeController : Controller
@@ -64,13 +65,13 @@ namespace OceanTechLevel1.Controllers
             return RedirectToAction("ListOfEmployee");
         }
 
-        public ActionResult ListOfEmployee(string searchTerm, int page = 1)
+        public ActionResult ListOfEmployee(string searchTerm, int page = ValidationConstants.DefaultPage)
         {
             // Tìm kiếm dựa trên từ khóa
             var employees = _employeeService.GetEmployees(searchTerm).ToList();
 
             // Paging 
-            int NoOfRecordPerPage = 10;
+            int NoOfRecordPerPage = ValidationConstants.DefaultNoOfRecordsPerPage;
             int NoOfPages = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(employees.Count) / Convert.ToDouble(NoOfRecordPerPage)));
             int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
 
