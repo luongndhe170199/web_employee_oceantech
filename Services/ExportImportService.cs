@@ -75,7 +75,7 @@ namespace OceanTechLevel1.Services
                     worksheet.Cell(i + 2, 7).Value = employee.Position;
                     worksheet.Cell(i + 2, 8).Value = employee.CitizenId;
                     worksheet.Cell(i + 2, 9).Value = employee.PhoneNumber ?? "Chưa cung cấp";
-                    worksheet.Cell(i + 2, 10).Value = employee.Province;
+                    worksheet.Cell(i + 2, 10).Value = employee.Province??"N/A";
                     worksheet.Cell(i + 2, 11).Value = employee.District ?? "N/A";
                     worksheet.Cell(i + 2, 12).Value = employee.Commune ?? "N/A";
                     worksheet.Cell(i + 2, 13).Value = employee.QualificationCount;

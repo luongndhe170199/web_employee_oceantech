@@ -173,3 +173,9 @@ C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Web.Infrastructur
 C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\X.PagedList.dll
 C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\X.PagedList.Mvc.dll
 C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\X.PagedList.Web.Common.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Extensions.Caching.Memory.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\OceanTech\web_employee_oceantech\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll

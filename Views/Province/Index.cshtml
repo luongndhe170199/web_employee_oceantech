@@ -57,40 +57,65 @@
                             NextPage = ViewBag.NoOfPages;
                         }
 
+                        // Limit the number of visible pages
+                        int maxVisiblePages = 5; // Number of pages to show around the current page
+                        int startPage = Math.Max(1, ViewBag.Page - (maxVisiblePages / 2));
+                        int endPage = Math.Min(ViewBag.NoOfPages, ViewBag.Page + (maxVisiblePages / 2));
                     }
                     <ul class="pagination justify-content-center">
-                        <li class="page-item ">
-                            <a class="page-link" href="@Url.Action("Index", "Province",new { page = PrevPage, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
+                        <!-- Previous Button -->
+                        <li class="page-item @(ViewBag.Page == 1 ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("Index", "Province", new { page = PrevPage, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
                                 Prev
                             </a>
                         </li>
-                        @for (int i = 0; i < ViewBag.NoOfPages; i++)
+
+                        <!-- First Page -->
+                        @if (startPage > 1)
                         {
-                            if (i + 1 == ViewBag.Page)
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", "Province", new { page = 1, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
+                                    1
+                                </a>
+                            </li>
+                            @if (startPage > 2)
                             {
-                                <li class="page-item active">
-                                    <a class="page-link" href="@Url.Action("Index", "Province", new { page = (i + 1), searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
-                                        @(i + 1)
-                                    </a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="page-item ">
-                                    <a class="page-link" href="@Url.Action("Index", "Province", new { page = (i + 1), searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
-                                        @(i + 1)
-                                    </a>
-                                </li>
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
                             }
                         }
-                        <li class="page-item active">
+
+                        <!-- Visible Page Links -->
+                        @for (int i = startPage; i <= endPage; i++)
+                        {
+                            <li class="page-item @(i == ViewBag.Page ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", "Province", new { page = i, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
+                                    @i
+                                </a>
+                            </li>
+                        }
+
+                        <!-- Last Page -->
+                        @if (endPage < ViewBag.NoOfPages)
+                        {
+                            @if (endPage < ViewBag.NoOfPages - 1)
+                            {
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            }
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", "Province", new { page = ViewBag.NoOfPages, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
+                                    @ViewBag.NoOfPages
+                                </a>
+                            </li>
+                        }
+
+                        <!-- Next Button -->
+                        <li class="page-item @(ViewBag.Page == ViewBag.NoOfPages ? "disabled" : "")">
                             <a class="page-link" href="@Url.Action("Index", "Province", new { page = NextPage, searchTerm = Context.Request.Query["searchTerm"].FirstOrDefault() })">
                                 Next
                             </a>
                         </li>
                     </ul>
                 </td>
-
             </tr>
         </tbody>
     </table>

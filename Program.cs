@@ -17,7 +17,8 @@ namespace OceanTechLevel1
             // Add DbContext configuration
             builder.Services.AddDbContext<Oceantech2Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-
+            // Add MemoryCache services
+            builder.Services.AddMemoryCache();
             // Service
             builder.Services.AddScoped<EmployeeService>();  
             builder.Services.AddScoped<ExportImportService>();    
@@ -28,6 +29,7 @@ namespace OceanTechLevel1
             builder.Services.AddScoped<CommuneService>();
             builder.Services.AddScoped<ValidationService>();
             builder.Services.AddScoped<PagingService>();
+           
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

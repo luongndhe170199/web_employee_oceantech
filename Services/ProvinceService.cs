@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using OceanTechLevel1.Models;
 using System;
 using System.Collections.Generic;
@@ -11,24 +12,43 @@ namespace OceanTechLevel1.Services
     {
         private readonly Oceantech2Context _context;
         private readonly PagingService _pagingService;
+        private readonly IMemoryCache _cache;
 
-        public ProvinceService(Oceantech2Context context, PagingService pagingService)
+        public ProvinceService(Oceantech2Context context, PagingService pagingService, IMemoryCache cache)
         {
             _context = context;
             _pagingService = pagingService;
+            _cache = cache;
         }
 
         public List<Province> GetProvinces(string searchTerm, int page, int pageSize, out int totalPages)
         {
-            var provinces = _context.Provinces.AsQueryable();
+            var cacheKey = $"GetProvinces_{searchTerm}_{page}_{pageSize}";
 
-            if (!string.IsNullOrEmpty(searchTerm))
+            // Kiểm tra xem dữ liệu có trong cache hay không
+            if (!_cache.TryGetValue(cacheKey, out List<Province> provinces))
             {
-                searchTerm = searchTerm.ToLower().Trim();
-                provinces = provinces.Where(p => p.ProvinceName.ToLower().Contains(searchTerm));
+                var query = _context.Provinces.AsQueryable();
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    searchTerm = searchTerm.ToLower().Trim();
+                    query = query.Where(p => p.ProvinceName.ToLower().Contains(searchTerm));
+                }
+
+                // Áp dụng phân trang
+                provinces = _pagingService.GetPagedResult(query, page, pageSize, out totalPages);
+
+                // Lưu dữ liệu vào cache với thời hạn là 5 phút
+                _cache.Set(cacheKey, provinces, TimeSpan.FromMinutes(30));
+            }
+            else
+            {
+                // Tính toán lại số trang nếu dữ liệu lấy từ cache
+                totalPages = (int)Math.Ceiling((double)_context.Provinces.Count() / pageSize);
             }
 
-            return _pagingService.GetPagedResult(provinces, page, pageSize, out totalPages);
+            return provinces;
         }
 
         public Province GetProvinceById(int id)
@@ -40,6 +60,7 @@ namespace OceanTechLevel1.Services
         {
             _context.Provinces.Add(province);
             _context.SaveChanges();
+            _cache.Remove("GetProvinces_*");
         }
 
         public bool ProvinceExists(string provinceName)
@@ -50,6 +71,7 @@ namespace OceanTechLevel1.Services
         public void UpdateProvince(Province province)
         {
             _context.SaveChanges();
+            _cache.Remove("GetProvinces_*");
         }
 
         public void DeleteProvince(Province province)
@@ -95,6 +117,8 @@ namespace OceanTechLevel1.Services
 
                 // Lưu thay đổi vào cơ sở dữ liệu
                 _context.SaveChanges();
+
+                _cache.Remove("GetProvinces_*");
             }
         }
 
